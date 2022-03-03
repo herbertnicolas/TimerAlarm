@@ -39,20 +39,21 @@ start.addEventListener('click', function(){
         if(segundoAtual <= 0){
             if(minutoAtual <= 0){
                 if(horaAtual > 0){
-                    horaAtual--;
+                    horaAtual--;  
                     minutoAtual=59;
+                    segundoAtual=59;                  
                 }
-                if(horaAtual == 0){
-                    alert("The time is over.");
-                    document.getElementById("somAlarme").play();
+                if(horaAtual && minutoAtual && segundoAtual == 0){
                     clearInterval(tictac);
+                    document.getElementById("somAlarme").play();
+                    alert("The time is over.");
                 }
             }else{
                 minutoAtual--;
                 segundoAtual = 59;
             }
         }
+        //repetindo display para atualizar a cada segundo
         display.childNodes[1].innerHTML = horaAtual + ":" + minutoAtual + ":" + segundoAtual;
-
     },1000);
 });
