@@ -1,15 +1,15 @@
-var display = document.getElementById('display');
+let display = document.getElementById('display');
 
-var hours = document.getElementById('hours');
-var minutes = document.getElementById('minutes');
-var seconds = document.getElementById('seconds');
+let hours = document.getElementById('hours');
+let minutes = document.getElementById('minutes');
+let seconds = document.getElementById('seconds');
 
-var start = document.getElementById('start');
+let start = document.getElementById('start');
 
-var tictac;
-var horaAtual;
-var minutoAtual;
-var segundoAtual;
+let tictac;
+let horaAtual;
+let minutoAtual;
+let segundoAtual;
 
 for(var i = 0; i <= 24; i++){
     hours.innerHTML += '<option value="'+i+'">'+i+'</option>';
