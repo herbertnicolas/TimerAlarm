@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Cronômetro em JavaScript</title>
+        <style>
+            .container{
+                text-align: center;
+                align-items: center;
+                padding-bottom: 20px;
+            }
+            .buttonContainer{
+                padding-top: 50px;
+            }
+            button{
+                background: rgb(72, 224, 140);
+                color: white;
+                font-size: 40px;
+                border-radius: 15px;
+            }
+            .display{
+                text-align: center;
+                padding: 30px 30px;
+                font-size: 60px;
+                border-style: dotted;
+                border-radius: 30px;
+            }
+            .space{
+                padding-top: 60px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <audio src="alarm.mp3" id="somAlarme" class="sound" style="display: none;"></audio>
+        
+        <div class="space"></div>
+        <div class="display">
+            <h3></h3>
+        </div>
+        <div class="container">
+            <h2>Hours:</h2>
+            <select id="hours" name="hours">
+               
+            </select>
+
+            <h2>Minutes:</h2>
+            <select id="minutes" name="minutes"></select>
+            
+            <h2>Seconds:</h2>
+            <select id="seconds" name="seconds"></select>
+            
+            <div class="buttonContainer">
+                <button id="start">Start!</button>
+            </div>
+        </div>
+
+        <script>
+            var display = document.getElementById('display');
+
+            var hours = document.getElementById('hours');
+            var minutes = document.getElementById('minutes');
+            var seconds = document.getElementById('seconds');
+
+            var start = document.getElementById('start');
+
+            var tictac;
+            var horaAtual;
+            var minutoAtual;
+            var segundoAtual;
+
+            for(var i = 0; i <= 24; i++){
+                hours.innerHTML += '<option value="'+i+'">'+i+'</option>';
+            }
+
+            for(var i = 0; i <= 60; i++){
+                minutes.innerHTML += '<option value="'+i+'">'+i+'</option>';
+            }
+
+            for(var i = 0; i <= 60; i++){
+                seconds.innerHTML += '<option value="'+i+'">'+i+'</option>';
+            }
+
+            start.addEventListener('click', function(){ 
+                horaAtual = hours.value;
+                minutoAtual = minutes.value;
+                segundoAtual = seconds.value;
+
+                display.childNodes[1].innerHTML = horaAtual + ":" + segundoAtual + ":" + minutoAtual;
+
+                tictac = setInterval(function(){
+                    segundoAtual--;
+                    
+                    /*if((horaAtual && minutoAtual && segundoAtual) == 0){
+                        break;
+                    }*/
+                    if(segundoAtual <= 0){
+                        if(minutoAtual <= 0){
+                            if(horaAtual > 0){
+                                horaAtual--;
+                                minutoAtual=59;
+                            }
+                            if(horaAtual == 0){
+                                alert("The time is over.");
+                                document.getElementById("somAlarme").play();
+                                clearInterval(tictac);
+                            }
+                        }else{
+                            minutoAtual--;
+                            segundoAtual = 59;
+                        }
+                    }
+                },1000);
+            });
+
+        </script>
+    </body>
+</html>
