@@ -52,5 +52,7 @@ start.addEventListener('click', function(){
                 segundoAtual = 59;
             }
         }
+        display.childNodes[1].innerHTML = horaAtual + ":" + minutoAtual + ":" + segundoAtual;
+
     },1000);
 });
