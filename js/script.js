@@ -24,6 +24,7 @@ for(var i = 0; i <= 60; i++){
 }
 
 start.addEventListener('click', function(){ 
+    
     horaAtual = hours.value;
     minutoAtual = minutes.value;
     segundoAtual = seconds.value;
@@ -54,6 +55,10 @@ start.addEventListener('click', function(){
             }
         }
         //repetindo display para atualizar a cada segundo
-        display.childNodes[1].innerHTML = horaAtual + ":" + minutoAtual + ":" + segundoAtual;
+        display.childNodes[1].innerHTML = 
+        (horaAtual < 10 ? '0' + horaAtual : horaAtual) + ":" + 
+        (minutoAtual < 10 ? '0' + minutoAtual : minutoAtual) + ":" + 
+        (segundoAtual < 10 ? '0' + segundoAtual : segundoAtual);
+
     },1000);
 });
